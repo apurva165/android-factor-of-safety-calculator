@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    >
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -370,12 +369,14 @@
             android:focusable="true"
             android:hint="Result4"/>
 
-        <EditText
+        <TextView
             android:id="@+id/editText18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-
+            android:paddingLeft="5dp"
+            android:gravity="center_vertical"
+            android:maxLines="1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentStart="true"

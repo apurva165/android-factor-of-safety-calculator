@@ -112,7 +112,7 @@ public class Main_page extends AppCompatActivity {
                         double b = 10.0; /*****GAMAw*****/
                         final double NDrockUnitWeight1 = a / b;
                         DecimalFormat form = new DecimalFormat("0.00");
-                        final String NDrockUnitWeight = form.format(NDrockUnitWeight1).toString();
+                        final String NDrockUnitWeight = form.format(NDrockUnitWeight1).toString() + "  Nondimensional unit weight of Rock";
                         Result1.setText(NDrockUnitWeight);
 //              Nondimensional cohesion
                         String str1 = CohesionJointPlane.getText().toString();
@@ -122,35 +122,35 @@ public class Main_page extends AppCompatActivity {
                         final double NDcohesion1 = c / (d * a);
                         double NDcohesion2 = Double.valueOf(NDcohesion1);
                         //	final String NDcohesion =new Double(NDcohesion1).toString();
-                        final String NDcohesion = form.format(NDcohesion1).toString();
+                        final String NDcohesion = form.format(NDcohesion1).toString() + "  Nondimensional cohesion  ";
                         Result2.setText(NDcohesion);
 //              Nondimensional Surcharge
                         String str3 = SchargePressure.getText().toString();
                         double e = Double.parseDouble(str3);
                         final double NDsurcharge1 = e / (d * a);
                         //		final String NDsurcharge =new Double(NDsurcharge1).toString();
-                        final String NDsurcharge = form.format(NDsurcharge1).toString();
+                        final String NDsurcharge = form.format(NDsurcharge1).toString() + "  Nondimensional Surcharge";
                         Result3.setText(NDsurcharge);
 //              Nondimensional Stabilizing force
                         String str4 = StablizingForce.getText().toString();
                         double f = Double.parseDouble(str4);
                         final double NDstabForce1 = f / (d * a * d);
                         //	final String NDstabForce =new Double(NDstabForce1).toString();
-                        final String NDstabForce = form.format(NDstabForce1).toString();
+                        final String NDstabForce = form.format(NDstabForce1).toString()+ "  Nondimensional Stabilizing Force";
                         Result4.setText(NDstabForce);
 //              Nondimensional Depth of tension crack
                         String str5 = DepthOfTensionCrack.getText().toString();
                         double z = Double.parseDouble(str5);
                         final double NDdepthOfTensionCrack1 = z / d;
                         //	final String NDdepthOfTensionCrack =new Double(NDdepthOfTensionCrack1).toString();
-                        final String NDdepthOfTensionCrack = form.format(NDdepthOfTensionCrack1).toString();
+                        final String NDdepthOfTensionCrack = form.format(NDdepthOfTensionCrack1).toString() + "  Nondimensional Depth of tension crack";
                         Result5.setText(NDdepthOfTensionCrack);
 //              Nondimensional Depth of water in tension crack
                         String str12 = DepthOfWaterTensionCrack.getText().toString();
                         double zw = Double.parseDouble(str12);
                         final double DepthOfWaterTensionCrack1 = zw / d;
                         //	final String aa =new Double(DepthOfWaterTensionCrack1).toString();
-                        final String aa = form.format(DepthOfWaterTensionCrack1).toString();
+                        final String aa = form.format(DepthOfWaterTensionCrack1).toString()+ "  Nondimensional Depth of water in tension crack";
                         Result6.setText(aa);
 //              Calculating P
                         String str6 = FailurePlanehorizontalInclination.getText().toString();
@@ -158,22 +158,26 @@ public class Main_page extends AppCompatActivity {
                         double rad = y * Math.PI / 180;
                         double P = (1 - NDdepthOfTensionCrack1) * (1 / Math.sin(rad));
                         //final String p =new Double(P).toString();
-                        final String p = form.format(P).toString();
+                        final String p = form.format(P).toString() ;
+                        final String p1 = form.format(P).toString() + "  Value of P";
                         double p2 = Double.valueOf(p);
-                        Result10.setText(p);
+                        Result10.setText(p1);
 //              Calculating Q
                         String str7 = SlopeHorizontalInclination.getText().toString();
                         double x = Double.parseDouble(str7);
                         double rad2 = x * Math.PI / 180;
                         double Q = ((1 - (NDdepthOfTensionCrack1 * NDdepthOfTensionCrack1)) * (1 / Math.tan(rad))) - 1 / Math.tan(rad2);
                         //final String q =new Double(Q).toString();
-                        final String q = form.format(Q).toString();
+                        final String q = form.format(Q).toString()+ "  Value of Q";
                         Result8.setText(q);
 //              Calculating R
                         double R = ((1 - (NDdepthOfTensionCrack1)) * (1 / Math.tan(rad))) - 1 / Math.tan(rad2);
                         //final String r =new Double(R).toString();
-                        final String r = form.format(R).toString();
+                        final String r = form.format(R).toString()+ "  Value of R";
                         Result9.setText(r);
+
+
+
 //                ******FS FORMULA *******
 //              2cstar P
                         double ss = 2.0 * (NDcohesion2) * P;
@@ -207,7 +211,7 @@ public class Main_page extends AppCompatActivity {
                         final double finalResult2 = (zz * ww) + uu - yy;
                         final double finalResult3 = finalResult1 / finalResult2;
                         //	final String finalResult =new Double(finalResult3).toString();
-                        final String finalResult = form.format(finalResult3).toString();
+                        final String finalResult = form.format(finalResult3).toString()/*+ "  Factor of Safety"*/;
                         FinalResult7.setText(finalResult);
                     }catch (NumberFormatException e)
                     {
