@@ -319,7 +319,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView14"
             android:focusable="true"
-            android:hint="Fs value"
+            android:hint=" Optional Fs value"
             android:inputType="phone"/>
         <!--
                FS information Ends

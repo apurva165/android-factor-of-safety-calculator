@@ -35,6 +35,7 @@ public class Main_page extends AppCompatActivity {
         final EditText FailurePlanehorizontalInclination = (EditText)findViewById(R.id.editText11);
         final EditText HzSeismicCofficient = (EditText)findViewById(R.id.editText12);
         final EditText VrSeismicCofficient = (EditText)findViewById(R.id.editText13);
+        final EditText OptionalFs = (EditText)findViewById(R.id.editText24);
         final TextView Result1 = (TextView)findViewById(R.id.editText14);
         final TextView Result2 = (TextView)findViewById(R.id.editText15);
         final TextView Result3 = (TextView)findViewById(R.id.editText16);
@@ -384,10 +385,17 @@ public class Main_page extends AppCompatActivity {
                         double thita = (Math.tan(rad5));
                         double xx = (Math.cos(thita + rad)) / (Math.cos(rad));
                         double ww = (Math.sin(thita + rad)) / (Math.cos(rad));
+
+//                        Extra calculation for T
+                        String str13 = OptionalFs.getText().toString();
+                        double m = Double.parseDouble(str13);
+                        double twocosalphatanthita = 2*(Math.cos(y))*thita;
+                        double twosinalphatanthita = 2*(Math.sin(y))*m;
+
 //                ****Final Result ****
-                        final double finalResult1 = ss + (zz * xx) - vv - tt + (yy * rr);
-                        final double finalResult2 = (zz * ww) + uu - yy;
-                        final double finalResult3 = finalResult1 / finalResult2;
+                        final double finalResult1 = (zz*ww*uu)*m - ss - ((zz * xx - vv - tt)*thita);
+                        final double finalResult2 =twocosalphatanthita * twosinalphatanthita;
+                        final double finalResult3 = (finalResult1 / finalResult2)*(d*a);
                         //	final String finalResult =new Double(finalResult3).toString();
                         final String finalResult = form.format(finalResult3).toString()/*+ "  Factor of Safety"*/;
                         FinalResult8.setText(finalResult);
