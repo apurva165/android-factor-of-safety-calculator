@@ -9,12 +9,13 @@
     tools:context="surya.project_10.Main_page">
 
     <include layout="@layout/content_main_page"
-        android:layout_height="352dp" />
+        android:layout_width="wrap_content"
+        android:layout_height= "match_parent"/>
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:fitsSystemWindows="true"
-        android:layout_height="194dp"
+        android:layout_height="189dp"
         android:layout_width="match_parent"
         android:theme="@style/AppTheme.AppBarOverlay">
 

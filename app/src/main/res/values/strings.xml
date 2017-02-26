@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">PROJECT</string>
     <string name="large_text"></string>
+    <string name="title_activity_nav">NavActivity</string>
     <!--<string name="@string/self_destruct">Send</string>-->
 
 
