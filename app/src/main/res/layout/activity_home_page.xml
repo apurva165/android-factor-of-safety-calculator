@@ -11,7 +11,7 @@
     tools:context="surya.project_10.home_page">
 
     <Button
-        android:text="T and FS Calculator"
+        android:text="FS Calculation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
