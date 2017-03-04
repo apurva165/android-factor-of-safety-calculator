@@ -8,10 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context="surya.project_10.Main_page">
 
-    <include layout="@layout/content_main_page"
-        android:layout_width="wrap_content"
-        android:layout_height= "match_parent"/>
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:fitsSystemWindows="true"
@@ -22,8 +18,8 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:fitsSystemWindows="true"
-            android:layout_width="match_parent"
-            android:layout_height="195dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary">
 
@@ -36,5 +32,7 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

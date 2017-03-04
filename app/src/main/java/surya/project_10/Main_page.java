@@ -1,5 +1,7 @@
 package surya.project_10;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Context;
+import android.view.View.OnClickListener;
 
 import java.text.DecimalFormat;
 
@@ -20,6 +24,7 @@ public class Main_page extends AppCompatActivity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main_page);
+        addListenerOnButton();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final EditText heightOfRockSlope = (EditText)findViewById(R.id.editText);
@@ -49,7 +54,10 @@ public class Main_page extends AppCompatActivity {
         final TextView Result9 = (TextView)findViewById(R.id.editText22);
         final Button submit = (Button)findViewById(R.id.button);
         final Button submit1 = (Button)findViewById(R.id.button1);
+
         /*****Calculating Nondimensional paramater******/
+
+
         submit.setOnClickListener(new View.OnClickListener()     {
             @Override
             public void onClick(View v) {
@@ -407,6 +415,26 @@ public class Main_page extends AppCompatActivity {
             }
         });
 
+
+    }
+    // Navigation
+    private void addListenerOnButton() {
+
+    final Context context = this;
+
+    final Button homePage = (Button)findViewById(R.id.button6);
+
+        homePage.setOnClickListener(new OnClickListener() {
+
+        @Override
+        public void onClick(View arg0) {
+
+            Intent intent = new Intent(context, home_page.class);
+            startActivity(intent);
+
+        }
+
+    });
 
     }
 
