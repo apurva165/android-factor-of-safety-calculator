@@ -20,14 +20,14 @@ public class home_page extends AppCompatActivity {
     private void addListenerOnButton() {
         final Context context = this;
 
-        final Button tAndFs = (Button)findViewById(R.id.button8);
-        final Button otherCalc = (Button)findViewById(R.id.button9);
+        final Button tAndFs = (Button) findViewById(R.id.button8);
+        final Button otherCalc = (Button) findViewById(R.id.button9);
         tAndFs.setOnClickListener(new OnClickListener() {
-        @Override
-        public void onClick(View arg0) {
+            @Override
+            public void onClick(View arg0) {
 
-            Intent intent = new Intent(context, Main_page.class);
-            startActivity(intent);
+                Intent intent = new Intent(context, Main_page.class);
+                startActivity(intent);
             }
         });
         otherCalc.setOnClickListener(new OnClickListener() {
