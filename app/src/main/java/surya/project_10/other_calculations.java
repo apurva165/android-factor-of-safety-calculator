@@ -55,10 +55,10 @@ public class other_calculations extends AppCompatActivity {
         final EditText newfy = (EditText)findViewById(R.id.editText33);
         final EditText newfsb = (EditText)findViewById(R.id.editText34);
         final EditText newfal = (EditText)findViewById(R.id.editText35);
-
-
-
-
+        final Button BNLsubmit = (Button)findViewById(R.id.button10);
+        final TextView bresult = (TextView)findViewById(R.id.editText36);
+        final TextView Nresult = (TextView)findViewById(R.id.editText37);
+        final TextView Lresult = (TextView)findViewById(R.id.editText38);
 
         // *******T calculation *****
 
@@ -242,6 +242,135 @@ public class other_calculations extends AppCompatActivity {
                 }
             }
         });
+
+//        new calaculations
+
+        BNLsubmit.setOnClickListener(new View.OnClickListener()     {
+            @Override
+            public void onClick(View v) {
+/*
+
+//              Nondimensional unit weight of rock
+                        String str = RockUnitWeight.getText().toString();
+                        double a = Double.parseDouble(str);
+                        double b = 10.0; *//*****GAMAw*****//*
+                        final double NDrockUnitWeight1 = a / b;
+                        DecimalFormat form = new DecimalFormat("0.00");
+                        final String NDrockUnitWeight = form.format(NDrockUnitWeight1).toString() + "  Nondimensional unit weight of Rock";
+                        Result1.setText(NDrockUnitWeight);
+//              Nondimensional cohesion
+                        String str1 = CohesionJointPlane.getText().toString();
+                        double c = Double.parseDouble(str1);
+                        String str2 = heightOfRockSlope.getText().toString();
+                        double d = Double.parseDouble(str2);
+                        final double NDcohesion1 = c / (d * a);
+                        double NDcohesion2 = Double.valueOf(NDcohesion1);
+                        //	final String NDcohesion =new Double(NDcohesion1).toString();
+                        final String NDcohesion = form.format(NDcohesion1).toString() + "  Nondimensional cohesion  ";
+                        Result2.setText(NDcohesion);
+//              Nondimensional Surcharge
+                        String str3 = SchargePressure.getText().toString();
+                        double e = Double.parseDouble(str3);
+                        final double NDsurcharge1 = e / (d * a);
+                        //		final String NDsurcharge =new Double(NDsurcharge1).toString();
+                        final String NDsurcharge = form.format(NDsurcharge1).toString() + "  Nondimensional Surcharge";
+                        Result3.setText(NDsurcharge);
+//              Nondimensional Stabilizing force
+                        String str4 = StablizingForce.getText().toString();
+                        double f = Double.parseDouble(str4);
+                        final double NDstabForce1 = f / (d * a * d);
+                        //	final String NDstabForce =new Double(NDstabForce1).toString();
+                        final String NDstabForce = form.format(NDstabForce1).toString()+ "  Nondimensional Stabilizing Force";
+                        Result4.setText(NDstabForce);
+//              Nondimensional Depth of tension crack
+                        String str5 = DepthOfTensionCrack.getText().toString();
+                        double z = Double.parseDouble(str5);
+                        final double NDdepthOfTensionCrack1 = z / d;
+                        //	final String NDdepthOfTensionCrack =new Double(NDdepthOfTensionCrack1).toString();
+                        final String NDdepthOfTensionCrack = form.format(NDdepthOfTensionCrack1).toString() + "  Nondimensional Depth of tension crack";
+                        Result5.setText(NDdepthOfTensionCrack);
+//              Nondimensional Depth of water in tension crack
+                        String str12 = DepthOfWaterTensionCrack.getText().toString();
+                        double zw = Double.parseDouble(str12);
+                        final double DepthOfWaterTensionCrack1 = zw / d;
+                        //	final String aa =new Double(DepthOfWaterTensionCrack1).toString();
+                        final String aa = form.format(DepthOfWaterTensionCrack1).toString()+ "  Nondimensional Depth of water in tension crack";
+                        Result6.setText(aa);
+//              Calculating P
+                        String str6 = FailurePlanehorizontalInclination.getText().toString();
+                        double y = Double.parseDouble(str6);
+                        double rad = y * Math.PI / 180;
+                        double P = (1 - NDdepthOfTensionCrack1) * (1 / Math.sin(rad));
+                        //final String p =new Double(P).toString();
+                        final String p = form.format(P).toString() ;
+                        final String p1 = form.format(P).toString() + "  Value of P";
+                        double p2 = Double.valueOf(p);
+                        Result10.setText(p1);
+//              Calculating Q
+                        String str7 = SlopeHorizontalInclination.getText().toString();
+                        double x = Double.parseDouble(str7);
+                        double rad2 = x * Math.PI / 180;
+                        double Q = ((1 - (NDdepthOfTensionCrack1 * NDdepthOfTensionCrack1)) * (1 / Math.tan(rad))) - 1 / Math.tan(rad2);
+                        //final String q =new Double(Q).toString();
+                        final String q = form.format(Q).toString()+ "  Value of Q";
+                        Result8.setText(q);
+//              Calculating R
+                        double R = ((1 - (NDdepthOfTensionCrack1)) * (1 / Math.tan(rad))) - 1 / Math.tan(rad2);
+                        //final String r =new Double(R).toString();
+                        final String r = form.format(R).toString()+ "  Value of R";
+                        Result9.setText(r);
+
+
+
+//                ******FS FORMULA *******
+//              2cstar P
+                        double ss = 2.0 * (NDcohesion2) * P;
+//              (1+Kv)(Q +(2qstar*R))
+                        String str8 = VrSeismicCofficient.getText().toString();
+                        double g = Double.parseDouble(str8);
+                        double zz = (1 + g) * (Q + (2 * NDsurcharge1 * R));
+//              angle of sharing resistance
+                        String str11 = AngleOfSharingResistence.getText().toString();
+                        double k = Double.parseDouble(str11);
+//              vv
+                        double vv = ((DepthOfWaterTensionCrack1 * DepthOfWaterTensionCrack1) / NDrockUnitWeight1) * (Math.sin(rad));
+                        double uu = ((DepthOfWaterTensionCrack1 * DepthOfWaterTensionCrack1) / NDrockUnitWeight1) * (Math.cos(rad));
+                        double rad3 = k * Math.PI / 180;
+                        double rr = Math.tan(rad3);
+//              yy
+                        String str9 = AngleOfInclinationStabForce.getText().toString();
+                        double i = Double.parseDouble(str9);
+                        double rad4 = i * Math.PI / 180;
+                        double yy = 2 * f * (Math.cos(rad4));
+//              tt
+                        double tt = (DepthOfWaterTensionCrack1 / NDrockUnitWeight1) * p2;
+                        String str10 = HzSeismicCofficient.getText().toString();
+                        double j = Double.parseDouble(str10);
+                        double rad5 = j * Math.PI / 180;
+                        double thita = (Math.tan(rad5));
+                        double xx = (Math.cos(thita + rad)) / (Math.cos(rad));
+                        double ww = (Math.sin(thita + rad)) / (Math.cos(rad));
+
+//                        Extra calculation for T
+                        String str13 = OptionalFs.getText().toString();
+                        double m = Double.parseDouble(str13);
+                        double twocosalphatanthita = 2*(Math.cos(y))*thita;
+                        double twosinalphatanthita = 2*(Math.sin(y))*m;
+
+//                ****Final Result ****
+                        final double finalResult1 = (zz*ww*uu)*m - ss - ((zz * xx - vv - tt)*thita);
+                        final double finalResult2 =twocosalphatanthita * twosinalphatanthita;
+                        final double finalResult3 = (finalResult1 / finalResult2)*(d*a);
+                        //	final String finalResult =new Double(finalResult3).toString();
+                        final String finalResult = form.format(finalResult3).toString()*//*+ "  Factor of Safety"*//*;*/
+
+                        String  aaaa = "under progress  ";
+                        bresult.setText(aaaa);
+                        Nresult.setText(aaaa);
+                        Lresult.setText(aaaa);
+                    }
+            }
+        );
 
 
     }
