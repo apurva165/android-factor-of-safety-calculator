@@ -386,16 +386,19 @@ public class other_calculations extends AppCompatActivity {
 
                 double newp = ((3.14) * (Newd * Newd) * Newfy) / 4 * Newfsb;
 
-                double bcalculation = newp * (c - NDdepthOfTensionCrack1) * Math.sin(rad4 + rad) / finalResult3 * NewS * (Math.cos(rad4 + rad + rad2));
+                double bcalculation = newp * (c - NDdepthOfTensionCrack1) * Math.sin(rad4 + rad) / finalResult3 * NewS * (Math.cos(rad4 + rad - rad2));
+                double ncalculation =  (c - NDdepthOfTensionCrack1) * Math.sin(rad4 + rad) / NewS * bcalculation * (Math.cos(rad4 + rad - rad2));
+                double lcalculation =  ncalculation*NewS*Math.sin(rad + rad2)/ Math.cos(rad)+Newfal;
 
 
 
                 final String finalBvalue = form.format(bcalculation).toString() + "  Value of b";
+                final String finalNvalue = form.format(ncalculation).toString() + "  Value of N";
+                final String finalLvalue = form.format(lcalculation).toString() + "  Value of L";
                 bresult.setText(finalBvalue);
+                Nresult.setText(finalNvalue);
+                Lresult.setText(finalLvalue);
 
-                String aaaa = "under progress";
-                Nresult.setText(aaaa);
-                Lresult.setText(aaaa);
             }
         });
 
