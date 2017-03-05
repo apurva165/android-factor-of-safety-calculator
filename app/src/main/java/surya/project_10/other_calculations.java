@@ -48,6 +48,18 @@ public class other_calculations extends AppCompatActivity {
         final TextView Result9 = (TextView)findViewById(R.id.editText22);
         final Button submit = (Button)findViewById(R.id.button);
 
+        // new added values
+        final EditText newb  = (EditText)findViewById(R.id.editText30);
+        final EditText newS = (EditText)findViewById(R.id.editText31);
+        final EditText newd = (EditText)findViewById(R.id.editText32);
+        final EditText newfy = (EditText)findViewById(R.id.editText33);
+        final EditText newfsb = (EditText)findViewById(R.id.editText34);
+        final EditText newfal = (EditText)findViewById(R.id.editText35);
+
+
+
+
+
         // *******T calculation *****
 
         submit.setOnClickListener(new View.OnClickListener()     {
