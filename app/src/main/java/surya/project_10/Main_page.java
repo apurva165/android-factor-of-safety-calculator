@@ -260,7 +260,9 @@ public class Main_page extends AppCompatActivity {
                         Log.d("this is y", Double.toString(y));
                         Log.d("ww", Double.toString(ww));
                         //                ****Final Result ****
-                        final double finalResult1 = ss + (zz * xx) - vv - tt + (yy * rr);
+
+
+                        final double finalResult1 = ss + ((zz * xx) - vv - tt + yy) * rr;
                         Log.d("finalResult1", Double.toString(finalResult1));
                         final double finalResult2 = (zz * ww) + uu - gg;
                               Log.d("finalResult2", Double.toString(finalResult2));
