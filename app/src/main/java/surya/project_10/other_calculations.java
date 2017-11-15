@@ -25,7 +25,6 @@ public class other_calculations extends AppCompatActivity {
         final EditText heightOfRockSlope = (EditText) findViewById(R.id.editText);
         final EditText RockUnitWeight = (EditText) findViewById(R.id.editText2);
         final EditText SchargePressure = (EditText) findViewById(R.id.editText3);
-        final EditText StablizingForce = (EditText) findViewById(R.id.editText4);
         final EditText DepthOfTensionCrack = (EditText) findViewById(R.id.editText5);
         final EditText DepthOfWaterTensionCrack = (EditText) findViewById(R.id.editText6);
         final EditText AngleOfInclinationStabForce = (EditText) findViewById(R.id.editText7);
@@ -70,7 +69,6 @@ public class other_calculations extends AppCompatActivity {
                 String xyz = heightOfRockSlope.getText().toString();
                 String xyz1 = RockUnitWeight.getText().toString();
                 String xyz2 = SchargePressure.getText().toString();
-                String xyz3 = StablizingForce.getText().toString();
                 String xyz4 = DepthOfTensionCrack.getText().toString();
                 String xyz5 = DepthOfWaterTensionCrack.getText().toString();
                 String xyz6 = AngleOfInclinationStabForce.getText().toString();
@@ -89,9 +87,6 @@ public class other_calculations extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                 } else if (xyz2.length() == 0) {
                     Toast.makeText(other_calculations.this, "Please enter Scharge Pressure",
-                            Toast.LENGTH_LONG).show();
-                } else if (xyz3.length() == 0) {
-                    Toast.makeText(other_calculations.this, "Please enter Stabilizing Force",
                             Toast.LENGTH_LONG).show();
                 } else if (xyz4.length() == 0) {
                     Toast.makeText(other_calculations.this, "Please enter Depth Of Tensi on Crack",
@@ -152,19 +147,20 @@ public class other_calculations extends AppCompatActivity {
                         final String NDsurcharge = form.format(NDsurcharge1).toString() + "  Nondimensional Surcharge";
                         Result3.setText(NDsurcharge);
                         //              Nondimensional Stabilizing force
-                        String str4 = StablizingForce.getText().toString();
-                        double f = Double.parseDouble(str4);
-                        final double NDstabForce1 = f / (d * a * d);
+               //         String str4 = StablizingForce.getText().toString();
+                //        double f = Double.parseDouble(str4);
+                        final double GymaH = (d * a * d);
                         Log.d("d", Double.toString(d));
                         Log.d("a", Double.toString(a));
 
                         //	final String NDstabForce =new Double(NDstabForce1).toString();
-                        final String NDstabForce = form.format(NDstabForce1).toString() + "  Nondimensional Stabilizing Force";
-                        Result4.setText(NDstabForce);
+               //         final String NDstabForce = form.format(NDstabForce1).toString() + "  Nondimensional Stabilizing Force";
+              //          Result4.setText(NDstabForce);
                         //              Nondimensional Depth of tension crack
                         String str5 = DepthOfTensionCrack.getText().toString();
                         double z = Double.parseDouble(str5);
                         final double NDdepthOfTensionCrack1 = z / d;
+                        Log.d("z", Double.toString(z));
                         //	final String NDdepthOfTensionCrack =new Double(NDdepthOfTensionCrack1).toString();
                         final String NDdepthOfTensionCrack = form.format(NDdepthOfTensionCrack1).toString() + "  Nondimensional Depth of tension crack";
                         Result5.setText(NDdepthOfTensionCrack);
@@ -172,15 +168,19 @@ public class other_calculations extends AppCompatActivity {
                         String str12 = DepthOfWaterTensionCrack.getText().toString();
                         double zw = Double.parseDouble(str12);
                         final double DepthOfWaterTensionCrack1 = zw / d;
+                        Log.d("zw", Double.toString(zw));
                         //	final String aa =new Double(DepthOfWaterTensionCrack1).toString();
                         final String aa = form.format(DepthOfWaterTensionCrack1).toString() + "  Nondimensional Depth of water in tension crack";
                         Result6.setText(aa);
                         //              Calculating P
                         String str6 = FailurePlanehorizontalInclination.getText().toString();
                         double y = Double.parseDouble(str6);
+                        Log.d("y", Double.toString(y));
                         double rad = y * Math.PI / 180;
                         double finalrad = y;
                         double P = (1 - NDdepthOfTensionCrack1) * (1 / Math.sin(rad));
+                        Log.d("NDdepthOfTensionCrack1", Double.toString(NDdepthOfTensionCrack1));
+                        Log.d("P", Double.toString(P));
                         //final String p =new Double(P).toString();
                         final String p = form.format(P).toString();
                         final String p1 = form.format(P).toString() + "  Value of P";
@@ -234,15 +234,15 @@ public class other_calculations extends AppCompatActivity {
                         double i = Double.parseDouble(str9);
                         double rad4 = i * Math.PI / 180;
 
-                        double yy = 2 * NDstabForce1 * (Math.cos(rad4));
-                        Log.d("yy", Double.toString(yy));
+                       double yy = 2 * (Math.cos(rad4));
+                 //       Log.d("yy", Double.toString(yy));
                         //              tt
                         double tt = (DepthOfWaterTensionCrack1 / NDrockUnitWeight1) * p2;
                         Log.d("tt", Double.toString(tt));
 
                         // gg
-                        double gg = 2 * NDstabForce1 * (Math.sin(rad4));
-                        Log.d("gg", Double.toString(gg));
+                        double gg = 2  * (Math.sin(rad4));
+              //          Log.d("gg", Double.toString(gg));
                         String str10 = HzSeismicCofficient.getText().toString();
 
 
@@ -267,23 +267,32 @@ public class other_calculations extends AppCompatActivity {
                         Log.d("ww", Double.toString(ww));
                         //                ****Final Result ****
 
+                        //Extra calculation for T
+                        String str13 = OptionalFs.getText().toString();
+                        double m = Double.parseDouble(str13);
 
-                        final double finalResult1 = ss + ((zz * xx) - vv - tt + yy) * rr;
-                        Log.d("finalResult1", Double.toString(finalResult1));
-                        final double finalResult2 = (zz * ww) + uu - gg;
-                        Log.d("finalResult2", Double.toString(finalResult2));
-                        final double finalResult3 = finalResult1 / finalResult2;
-                        Log.d("finalResult3", Double.toString(finalResult3));
+                        final double TnumValue = (((zz * ww) + uu) * m - ss - ((zz * xx) - vv - tt) * rr) * GymaH;
+                        final double Tdenovalue = (yy * rr) + (gg * m);
+
+                        final double Tresult = Math.ceil(TnumValue/Tdenovalue);
+
+
+               //         final double finalResult1 = ss + ((zz * xx) - vv - tt + yy) * rr;
+                //        Log.d("finalResult1", Double.toString(finalResult1));
+             //           final double finalResult2 = (zz * ww) + uu - gg;
+             //           Log.d("finalResult2", Double.toString(finalResult2));
+                //        final double finalResult3 = finalResult1 / finalResult2;
+                //        Log.d("finalResult3", Double.toString(finalResult3));
                         //	final String finalResult =new Double(finalResult3).toString();
 
                         // T result
 
-                        final double tNumerator = (((zz*ww) + ww)*finalResult3 - ss - ( (zz * xx) - vv -tt) * rr) * (d * a * d) ;
-                        final double tDenomenator = 2*(((Math.cos(rad4))*rr) + (Math.sin(rad4))* finalResult3);
-                        final double finalTresult = tNumerator/tDenomenator;
+                //        final double tNumerator = (((zz*ww) + ww)*finalResult3 - ss - ( (zz * xx) - vv -tt) * rr) * (d * a * d) ;
+              //          final double tDenomenator = 2*(((Math.cos(rad4))*rr) + (Math.sin(rad4))* finalResult3);
+               //         final double finalTresult = tNumerator/tDenomenator;
 
-                        final String finalTresult1 = form.format(finalTresult).toString() /*+ "  Factor of Safety"*/ ;
-                        FinalResult8.setText("100");
+                        final String finalTresult1 = form.format(Tresult).toString() /*+ "  Factor of Safety"*/ ;
+                        FinalResult8.setText(finalTresult1);
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
                     }
@@ -293,7 +302,7 @@ public class other_calculations extends AppCompatActivity {
 
         //        new calaculations
 
-        BNLsubmit.setOnClickListener(new View.OnClickListener() {
+/*        BNLsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -301,7 +310,7 @@ public class other_calculations extends AppCompatActivity {
                 //              Nondimensional unit weight of rock
                 String str = RockUnitWeight.getText().toString();
                 double a = Double.parseDouble(str);
-                double b = 10.0; /*****GAMAw*****/
+                double b = 10.0; *//*****GAMAw*****//*
                 final double NDrockUnitWeight1 = a / b;
                 DecimalFormat form = new DecimalFormat("0.00");
                 final String NDrockUnitWeight = form.format(NDrockUnitWeight1).toString() + "  Nondimensional unit weight of Rock";
@@ -328,15 +337,15 @@ public class other_calculations extends AppCompatActivity {
                 final String NDsurcharge = form.format(NDsurcharge1).toString() + "  Nondimensional Surcharge";
                 Result3.setText(NDsurcharge);
                 //              Nondimensional Stabilizing force
-                String str4 = StablizingForce.getText().toString();
-                double f = Double.parseDouble(str4);
-                final double NDstabForce1 = f / (d * a * d);
+              //  String str4 = StablizingForce.getText().toString();
+                //double f = Double.parseDouble(str4);
+            //    final double NDstabForce1 = f / (d * a * d);
                 Log.d("d", Double.toString(d));
                 Log.d("a", Double.toString(a));
 
                 //	final String NDstabForce =new Double(NDstabForce1).toString();
-                final String NDstabForce = form.format(NDstabForce1).toString() + "  Nondimensional Stabilizing Force";
-                Result4.setText(NDstabForce);
+            //    final String NDstabForce = form.format(NDstabForce1).toString() + "  Nondimensional Stabilizing Force";
+            //    Result4.setText(NDstabForce);
                 //              Nondimensional Depth of tension crack
                 String str5 = DepthOfTensionCrack.getText().toString();
                 double z = Double.parseDouble(str5);
@@ -409,15 +418,15 @@ public class other_calculations extends AppCompatActivity {
                 double i = Double.parseDouble(str9);
                 double rad4 = i * Math.PI / 180;
 
-                double yy = 2 * NDstabForce1 * (Math.cos(rad4));
-                Log.d("yy", Double.toString(yy));
+           //     double yy = 2 * NDstabForce1 * (Math.cos(rad4));
+           //     Log.d("yy", Double.toString(yy));
                 //              tt
                 double tt = (DepthOfWaterTensionCrack1 / NDrockUnitWeight1) * p2;
                 Log.d("tt", Double.toString(tt));
 
                 // gg
-                double gg = 2 * NDstabForce1 * (Math.sin(rad4));
-                Log.d("gg", Double.toString(gg));
+        //        double gg = 2  * (Math.sin(rad4));
+         //       Log.d("gg", Double.toString(gg));
                 String str10 = HzSeismicCofficient.getText().toString();
 
 
@@ -445,6 +454,7 @@ public class other_calculations extends AppCompatActivity {
                 //Extra calculation for T
                 String str13 = OptionalFs.getText().toString();
                 double m = Double.parseDouble(str13);
+
                 double twocosalphatanthita = 2 * (Math.cos(Math.toRadians(y))) * ( Math.toRadians(thita));
                 double twosinalphatanthita = 2 * (Math.sin(Math.toRadians(y))) * ( Math.toRadians(m));
 
@@ -453,7 +463,7 @@ public class other_calculations extends AppCompatActivity {
                 final double finalResult2 = twocosalphatanthita * twosinalphatanthita;
                 final double finalResult3 = (finalResult1 / finalResult2) * (d * a);
 
-                //**** b N L calculation****
+                /*//**** b N L calculation****
 
 
 
@@ -492,7 +502,7 @@ public class other_calculations extends AppCompatActivity {
                 Lresult.setText(finalLvalue);
 
             }
-        });
+        });*/
 
 
     }
